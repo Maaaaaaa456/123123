@@ -31,7 +31,7 @@
 
 # Download Image; replace link to $image to add your own image
 
-$image =  "https://github.com/Maaaaaaa456/123123/raw/main/maxresdefault.jpg"
+$image =  "https://github.com/Maaaaaaa456/123123/raw/fb096dfc3759eba19092c31f61b8d87098816155/maxresdefault.jpg"
 
 $i = -join($image,"?dl=1")
 iwr $i -O $env:TMP\i.png

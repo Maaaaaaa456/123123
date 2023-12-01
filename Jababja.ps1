@@ -31,16 +31,16 @@
 
 # Download Image; replace link to $image to add your own image
 
-$image =  "https://github.com/Maaaaaaa456/123123/raw/main/maxresdefault.jpg"
+$image =  "https://github.com/Maaaaaaa456/123123/raw/8c6a13341355433972602b4f7e5f1bbbe361b59f/Screenshot%202023-12-01%20100336.png"
 
 $i = -join($image,"?dl=1")
 iwr $i -O $env:TMP\i.png
 
-iwr https://github.com/Maaaaaaa456/123123/raw/main/maxresdefault.jpg?dl=1 -O $env:TMP\i.png
+iwr https://github.com/Maaaaaaa456/123123/raw/8c6a13341355433972602b4f7e5f1bbbe361b59f/Screenshot%202023-12-01%20100336.png?dl=1 -O $env:TMP\i.png
 
 # Download WAV file; replace link to $wav to add your own sound
 
-$wav = "https://github.com/Maaaaaaa456/123123/raw/main/Sequence%2001121121_1.wav"
+$wav = "https://github.com/Maaaaaaa456/123123/raw/8c6a13341355433972602b4f7e5f1bbbe361b59f/Sequence%2001_1.wav"
 
 $w = -join($wav,"?dl=1")
 iwr $w -O $env:TMP\s.wav

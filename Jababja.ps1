@@ -1,4 +1,4 @@
-The script worked but it showed the wrong image here is the link to the picture https://github.com/Maaaaaaa456/123123/blob/fb096dfc3759eba19092c31f61b8d87098816155/maxresdefault.jpg and here is the code ############################################################################################################################################################                      
+############################################################################################################################################################                      
 #                                  |  ___                           _           _              _             #              ,d88b.d88b                     #                                 
 # Title        : JumpScare         | |_ _|   __ _   _ __ ___       | |   __ _  | | __   ___   | |__    _   _ #              88888888888                    #           
 # Author       : I am Jakoby       |  | |   / _` | | '_ ` _ \   _  | |  / _` | | |/ /  / _ \  | '_ \  | | | |#              `Y8888888Y'                    #           
@@ -216,4 +216,3 @@ if ($caps -eq $true){
 $key = New-Object -ComObject WScript.Shell
 $key.SendKeys('{CapsLock}')
 }
-

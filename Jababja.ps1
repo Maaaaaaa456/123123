@@ -40,7 +40,7 @@ iwr https://github.com/Maaaaaaa456/123123/raw/8c6a13341355433972602b4f7e5f1bbbe3
 
 # Download WAV file; replace link to $wav to add your own sound
 
-$wav = "https://github.com/Maaaaaaa456/123123/raw/8c6a13341355433972602b4f7e5f1bbbe361b59f/Sequence%2001_1.wav"
+$wav = "https://github.com/Maaaaaaa456/123123/raw/4c1f38843bbce09341298e694e19715c1a57707d/Sequence%2001_1.wav"
 
 $w = -join($wav,"?dl=1")
 iwr $w -O $env:TMP\s.wav

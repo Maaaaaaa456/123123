@@ -1,8 +1,8 @@
-############################################################################################################################################################                      
+############################################################################################################################################################
 #                                  |  ___                           _           _              _             #              ,d88b.d88b                     #                                 
 # Title        : JumpScare         | |_ _|   __ _   _ __ ___       | |   __ _  | | __   ___   | |__    _   _ #              88888888888                    #           
 # Author       : I am Jakoby       |  | |   / _` | | '_ ` _ \   _  | |  / _` | | |/ /  / _ \  | '_ \  | | | |#              `Y8888888Y'                    #           
-# Version      : 1.0               |  | |  | (_| | | | | | | | | |_| | | (_| | |   <  | (_) | | |_) | | |_| |#               `Y888Y'                       #
+# Version      : 1.0               |  | |  | (_| | | | | | | | |_| | | (_| | |   <  | (_) | | |_) | | |_| |#               `Y888Y'                       #
 # Category     : Prank             | |___|  \__,_| |_| |_| |_|  \___/   \__,_| |_|\_\  \___/  |_.__/   \__, |#                 `Y'                         #
 # Target       : Windows 10,11     |                                                                   |___/ #           /\/|_      __/\\                  #     
 # Mode         : HID               |                                                           |\__/,|   (`\ #          /    -\    /-   ~\                 #             
@@ -29,25 +29,20 @@
 
 ############################################################################################################################################################
 
-# Download Image; replace link to $image to add your own image
+# Download Image; replace link to $viktortylus to add your own image
 
-$image =  "https://github.com/Maaaaaaa456/123123/raw/fb096dfc3759eba19092c31f61b8d87098816155/maxresdefault.jpg"
-
-$i = -join($image,"?dl=1")
+$viktortylus = "https://github.com/Maaaaaaa456/123123/raw/fb096dfc3759eba19092c31f61b8d87098816155/maxresdefault.jpg"
+$i = -join($viktortylus, "?dl=1")
 iwr $i -O $env:TMP\i.png
-
-iwr https://github.com/Maaaaaaa456/123123/raw/main/maxresdefault.jpg?dl=1 -O $env:TMP\i.png
 
 # Download WAV file; replace link to $wav to add your own sound
 
 $wav = "https://github.com/Maaaaaaa456/123123/raw/main/Sequence%2001121121_1.wav"
-
-$w = -join($wav,"?dl=1")
+$w = -join($wav, "?dl=1")
 iwr $w -O $env:TMP\s.wav
 
+# ... (rest of your existing code)
 
-
-#----------------------------------------------------------------------------------------------------
 
 <#
 

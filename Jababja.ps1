@@ -31,17 +31,16 @@
 
 # Download Image; replace link to $image to add your own image
 
-$RI = Get-Random @(1..3)
-
-$image =  "https://github.com/I-Am-Jakoby/hak5-submissions/raw/main/Assets/JumpScare-Wallpapers/$RI.png"
+$image =  "https://github.com/Maaaaaaa456/123123/raw/main/maxresdefault.jpg"
 
 $i = -join($image,"?dl=1")
-
 iwr $i -O $env:TMP\i.png
+
+iwr https://github.com/Maaaaaaa456/123123/raw/main/maxresdefault.jpg?dl=1 -O $env:TMP\i.png
 
 # Download WAV file; replace link to $wav to add your own sound
 
-$wav = "https://github.com/I-Am-Jakoby/hak5-submissions/blob/main/OMG/Payloads/OMG-JumpScare/female_scream.wav?raw=true"
+$wav = "https://github.com/Maaaaaaa456/123123/raw/main/Sequence%2001121121_1.wav"
 
 $w = -join($wav,"?dl=1")
 iwr $w -O $env:TMP\s.wav
